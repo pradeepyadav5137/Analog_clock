@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Annalog Clock</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
@@ -14,8 +15,10 @@
         <div class="clock">
             <div class="needle hour"></div>
             <div class="needle minutes"></div>
+            <div class="center"><i class="fa-solid fa-circle" style="  margin-top: 8px;
+                margin-left: 4px;"></i></div>
         </div>
-            
+
     </div>
 
 
@@ -30,24 +33,18 @@
         const mints = dt.getMinutes()
 
         mint.style.transform = "rotate(" + mints * 6 + "deg)"
+        const rotationAfter12 = (hours - 12) * 30 + mints / 2
+        const rotationBefore12 = hours * 30 + mints / 2
+        console.log(rotationAfter12)
 
-        // if (hours > 12) {
-        //     hour.style.transform = "rotate(" +(hours- 12) * 30 +"deg)"}
-
-        //     else 
-        //     {hour.style.transform = "rotate(" +hours * 30 + "deg)"}
-          
-            
         if (hours > 12) {
-            hour.style.transform = "rotate("+(hours- 12) * 30 + (mints/2) +"deg)"}
+            hour.style.transform = "rotate(" + rotationAfter12 + "deg)";
 
-            else 
-            {hour.style.transform = "rotate(" +(hours) * 30 + (mints/2) + "deg)"}
-                
-            
-        console.log((hours- 12) * 30 + (mints/2))
-        console.log(mints)
-        console.log(hours)
+        } 
+        else {
+            hour.style.transform = "rotate(" + rotationBefore12 + "deg)";
+        }
+
 
 
     </script>
